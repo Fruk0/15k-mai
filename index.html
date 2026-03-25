@@ -3,520 +3,932 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plan 15K — Objetivo 5:40/km</title>
+<title>Plan 15K</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --coral:#D85A30;--coral-mid:#F0997B;--coral-light:#FAECE7;--coral-dark:#993C1D;
-    --teal:#1D9E75;--teal-mid:#5DCAA5;--teal-light:#E1F5EE;--teal-dark:#0F6E56;
-    --amber:#BA7517;--amber-light:#FAEEDA;--amber-mid:#EF9F27;
-    --purple:#534AB7;--purple-light:#EEEDFE;
-    --gray-50:#F8F7F3;--gray-100:#F1EFE8;--gray-200:#D3D1C7;
-    --gray-400:#888780;--gray-600:#5F5E5A;--gray-800:#2C2C2A;
-    --bg:#FDFCF9;--text:#1A1A18;--muted:#6B6A66;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;padding-bottom:5rem;}
+:root {
+  --bg:       #141414;
+  --bg2:      #1C1C1C;
+  --bg3:      #222222;
+  --border:   #2A2A2A;
+  --border2:  #333333;
 
-  /* HERO */
-  .hero{background:var(--gray-800);color:white;padding:2.5rem 1.5rem 2rem;position:relative;overflow:hidden;}
-  .hero::before{content:'15K';font-family:'Bebas Neue',sans-serif;font-size:52vw;position:absolute;right:-6vw;top:-4rem;opacity:0.06;line-height:1;pointer-events:none;color:white;}
-  .hero-eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-mid);margin-bottom:.3rem;font-weight:500;}
-  .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,14vw,6rem);line-height:.9;letter-spacing:.02em;color:white;margin-bottom:1.2rem;}
-  .hero-title em{color:var(--coral-mid);font-style:normal;}
-  .hero-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:.75rem;}
-  .hero-chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:99px;padding:5px 12px;font-size:12px;color:rgba(255,255,255,.7);}
-  .hero-chip strong{color:white;font-weight:500;}
+  --text:     #F0F0EE;
+  --muted:    #666660;
+  --dim:      #3A3A38;
 
-  /* PROGRESS */
-  .progress-bar-wrap{background:white;border-bottom:1.5px solid var(--gray-100);padding:.9rem 1.5rem;position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:12px;}
-  .prog-track{flex:1;height:6px;background:var(--gray-100);border-radius:99px;overflow:hidden;}
-  .prog-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--coral));border-radius:99px;transition:width .4s cubic-bezier(.4,0,.2,1);min-width:0;}
-  .prog-label{font-size:13px;font-weight:500;color:var(--muted);white-space:nowrap;}
-  .prog-label span{color:var(--coral);}
+  --violet:   #8B7CF6;
+  --violet-d: #6D5DE0;
+  --violet-bg:#1E1A36;
 
-  /* PACES */
-  .paces-section{padding:1.25rem 1.5rem;background:var(--gray-800);border-bottom:1px solid #3a3a38;}
-  .eyebrow{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.75rem;}
-  .paces-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
-  @media(min-width:480px){.paces-grid{grid-template-columns:repeat(4,1fr);}}
-  .pc{border-radius:10px;padding:10px 12px;border:1px solid;}
-  .pc-s{background:#0A2E22;border-color:#1D9E7540;}
-  .pc-t{background:#2E1408;border-color:#D85A3040;}
-  .pc-c{background:#2E0E04;border-color:#99180D40;}
-  .pc-f{background:#18154A;border-color:#534AB740;}
-  .pc-name{font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px;}
-  .pc-s .pc-name{color:var(--teal-mid);}
-  .pc-t .pc-name{color:var(--coral-mid);}
-  .pc-c .pc-name{color:#F09595;}
-  .pc-f .pc-name{color:#AFA9EC;}
-  .pc-val{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.05em;line-height:1;}
-  .pc-s .pc-val{color:var(--teal-mid);}
-  .pc-t .pc-val{color:var(--coral-mid);}
-  .pc-c .pc-val{color:#F09595;}
-  .pc-f .pc-val{color:#AFA9EC;}
-  .pc-range{font-size:11px;margin-top:1px;opacity:.45;color:white;}
+  --blue:     #5BA4F5;
+  --blue-d:   #3D86E0;
+  --blue-bg:  #151E30;
 
-  /* WEEKS */
-  .weeks-wrap{padding:1.25rem 1.25rem 0;}
-  .outer-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem;padding:0 .25rem;}
+  --green:    #3EC98E;
+  --green-d:  #28A872;
+  --green-bg: #0F2820;
 
-  .week-card{margin-bottom:10px;border-radius:16px;border:1.5px solid var(--gray-200);overflow:hidden;background:white;}
-  .week-card.descarga{border-color:#F0D49A;}
-  .week-card.raceweek{border-color:var(--coral-mid);}
+  --amber:    #F5A623;
+  --amber-bg: #271E0A;
 
-  .week-hdr{padding:13px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none;background:var(--gray-50);border-bottom:1.5px solid var(--gray-200);-webkit-tap-highlight-color:transparent;}
-  .week-card.descarga .week-hdr{background:#FEF6E4;border-color:#F0D49A;}
-  .week-card.raceweek .week-hdr{background:var(--coral-light);border-color:var(--coral-mid);}
-  .week-hdr-l{display:flex;align-items:center;gap:8px;}
-  .wk-num{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.04em;color:var(--gray-800);line-height:1;}
-  .week-card.descarga .wk-num{color:#634006;}
-  .week-card.raceweek .wk-num{color:var(--coral-dark);}
-  .wk-pill{font-size:10px;padding:3px 8px;border-radius:99px;font-weight:500;letter-spacing:.04em;}
-  .pill-n{background:var(--gray-200);color:var(--gray-600);}
-  .pill-d{background:#FAC775;color:#412402;}
-  .pill-r{background:var(--coral);color:white;}
-  .wk-chev{color:var(--gray-400);font-size:16px;transition:transform .22s;line-height:1;}
-  .week-card.open .wk-chev{transform:rotate(180deg);}
-  .week-days{display:none;}
-  .week-card.open .week-days{display:block;}
+  --red:      #F56565;
+}
 
-  /* DAY */
-  .day-item{padding:14px 16px;border-bottom:1px solid var(--gray-100);display:flex;gap:10px;align-items:flex-start;}
-  .day-item:last-child{border-bottom:none;}
-  .day-check{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--gray-200);flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;margin-top:2px;background:white;-webkit-tap-highlight-color:transparent;font-size:13px;font-weight:700;}
-  .day-check.done{background:var(--teal);border-color:var(--teal);color:white;}
-  .day-check.done::after{content:'✓';}
-  .day-body{flex:1;min-width:0;}
-  .day-hdr{display:flex;align-items:center;gap:6px;margin-bottom:8px;flex-wrap:wrap;}
-  .day-name{font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
-  .dtag{font-size:10px;padding:2px 7px;border-radius:5px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;}
-  .t-fondo{background:var(--teal-light);color:var(--teal-dark);}
-  .t-int{background:var(--purple-light);color:var(--purple);}
-  .t-tempo{background:var(--coral-light);color:var(--coral-dark);}
-  .t-suave{background:var(--gray-100);color:var(--gray-600);}
-  .t-prog{background:var(--amber-light);color:#634006;}
-  .t-carrera{background:var(--coral);color:white;}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* WORKOUT */
-  .wk-wrap{display:flex;flex-direction:column;gap:5px;}
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  padding-bottom: 5rem;
+  -webkit-font-smoothing: antialiased;
+}
 
-  /* Step row */
-  .srow{display:flex;align-items:center;gap:8px;background:var(--gray-50);border-radius:9px;padding:8px 11px;border-left:3px solid var(--gray-200);}
-  .srow.wu,.srow.cd{border-left-color:var(--teal-mid);}
-  .srow.run{border-left-color:var(--coral);}
-  .srow.jog{border-left-color:var(--teal);}
-  .slabel{font-size:12px;color:var(--muted);flex:1;min-width:0;}
-  .slabel strong{color:var(--text);font-weight:500;}
-  .space{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.04em;flex-shrink:0;}
-  .sp-c{color:var(--coral);}
-  .sp-t{color:var(--teal);}
-  .sp-p{color:var(--purple);}
-  .sp-a{color:var(--amber);}
-  .srange{font-size:10px;color:var(--muted);flex-shrink:0;}
+/* ── HERO ── */
+.hero {
+  padding: 3rem 1.5rem 2.5rem;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '15K';
+  font-family: 'Space Mono', monospace;
+  font-size: 46vw;
+  position: absolute;
+  right: -4vw;
+  top: -2rem;
+  line-height: 1;
+  opacity: 0.03;
+  color: var(--violet);
+  pointer-events: none;
+  letter-spacing: -0.05em;
+}
+.hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--violet);
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+}
+.hero-title {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(3rem, 13vw, 5.5rem);
+  font-weight: 700;
+  line-height: 0.92;
+  color: var(--text);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.3rem;
+}
+.hero-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  color: var(--green);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.75rem;
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.meta-chip {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--border2);
+  color: var(--muted);
+  background: var(--bg2);
+}
+.meta-chip strong { color: var(--text); font-weight: 500; }
 
-  /* Interval set */
-  .iset{background:var(--gray-50);border-radius:11px;overflow:hidden;border:1.5px solid var(--gray-100);}
-  .iset-hdr{padding:6px 11px;font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--gray-100);border-bottom:1px solid var(--gray-200);}
-  .irow{display:flex;align-items:stretch;border-bottom:1px solid var(--gray-100);}
-  .irow:last-child{border-bottom:none;}
-  .ibar{width:4px;flex-shrink:0;}
-  .ibar-r{background:var(--coral);}
-  .ibar-j{background:var(--teal);}
-  .ibar-w{background:var(--amber-mid);}
-  .ibody{flex:1;padding:8px 11px;display:flex;align-items:center;justify-content:space-between;gap:8px;}
-  .itype{font-size:12px;font-weight:500;}
-  .it-r{color:var(--coral-dark);}
-  .it-j{color:var(--teal-dark);}
-  .it-w{color:var(--amber);}
-  .idur{font-size:12px;color:var(--muted);}
-  .ipace-wrap{text-align:right;}
-  .ipace{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:.04em;display:block;}
-  .irange{font-size:10px;color:var(--muted);display:block;}
+/* ── PROGRESS ── */
+.prog-bar {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  padding: 0.85rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.prog-track {
+  flex: 1;
+  height: 2px;
+  background: var(--border2);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.prog-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--violet), var(--green));
+  border-radius: 99px;
+  transition: width 0.4s ease;
+  min-width: 0;
+}
+.prog-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.prog-label span { color: var(--violet); }
 
-  /* Progression */
-  .prog-wrap{background:var(--gray-50);border-radius:11px;overflow:hidden;border:1.5px solid var(--gray-100);}
-  .prog-hdr{padding:6px 11px;font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--gray-100);border-bottom:1px solid var(--gray-200);}
-  .prow{display:flex;align-items:center;padding:8px 11px;gap:10px;border-bottom:1px solid var(--gray-100);}
-  .prow:last-child{border-bottom:none;}
-  .pdot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-  .pkm{font-size:12px;color:var(--muted);min-width:72px;}
-  .parrow{color:var(--gray-200);font-size:12px;}
-  .ppace{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:.04em;}
-  .prange{font-size:10px;color:var(--muted);margin-left:auto;}
+/* ── PACES ── */
+.paces {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.section-label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+.paces-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+@media(min-width:480px){ .paces-grid { grid-template-columns: repeat(4,1fr); } }
 
-  /* RACE CARD */
-  .race-card{margin:0 1.25rem 1rem;background:var(--gray-800);border-radius:16px;padding:1.5rem;color:white;position:relative;overflow:hidden;}
-  .race-card::after{content:'🏁';font-size:9rem;position:absolute;right:-1.5rem;bottom:-2rem;opacity:.07;}
-  .race-ey{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-mid);margin-bottom:4px;}
-  .race-title{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.04em;line-height:1;margin-bottom:1.1rem;}
-  .race-segs{display:flex;flex-direction:column;gap:6px;}
-  .rseg{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:9px 13px;display:flex;justify-content:space-between;align-items:center;}
-  .rseg-km{font-size:12px;color:rgba(255,255,255,.55);}
-  .rseg-pace{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:.05em;color:var(--coral-mid);}
+.pace-tile {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.pace-tile-name {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.pace-tile-val {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.pace-tile-range {
+  font-size: 10px;
+  margin-top: 3px;
+  opacity: 0.4;
+}
+.pt-v .pace-tile-name { color: var(--violet); }
+.pt-v .pace-tile-val  { color: var(--violet); }
+.pt-b .pace-tile-name { color: var(--blue); }
+.pt-b .pace-tile-val  { color: var(--blue); }
+.pt-g .pace-tile-name { color: var(--green); }
+.pt-g .pace-tile-val  { color: var(--green); }
+.pt-a .pace-tile-name { color: var(--amber); }
+.pt-a .pace-tile-val  { color: var(--amber); }
 
-  /* TIPS */
-  .tips-card{margin:0 1.25rem 1rem;background:var(--teal-light);border-radius:16px;padding:1.1rem 1.25rem;border:1.5px solid #9FE1CB;}
-  .tips-ttl{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-dark);font-weight:500;margin-bottom:8px;}
-  .tips-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
-  .tips-list li{font-size:13px;color:var(--teal-dark);padding-left:14px;position:relative;line-height:1.45;}
-  .tips-list li::before{content:'—';position:absolute;left:0;color:var(--teal);}
+/* ── WEEKS ── */
+.weeks { padding: 1rem 1rem 0; }
+.weeks-label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+  padding: 0 0.25rem;
+}
 
-  /* MOTO */
-  .moto{padding:2rem 1.5rem 1rem;text-align:center;}
-  .moto-t{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,9vw,3.8rem);letter-spacing:.03em;color:var(--gray-800);line-height:1.05;}
-  .moto-t em{color:var(--coral);font-style:normal;}
+.wcard {
+  margin-bottom: 6px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: var(--bg2);
+}
+.wcard.descarga { border-color: #3A2E0A; }
+.wcard.raceweek { border-color: var(--violet-d); }
+
+.whdr {
+  padding: 11px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  background: var(--bg3);
+  border-bottom: 1px solid var(--border);
+  -webkit-tap-highlight-color: transparent;
+}
+.wcard.descarga .whdr { background: var(--amber-bg); border-color: #3A2E0A; }
+.wcard.raceweek .whdr { background: var(--violet-bg); border-color: #2E2860; }
+
+.whdr-l { display: flex; align-items: center; gap: 8px; }
+.wnum {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+.wcard.descarga .wnum { color: var(--amber); }
+.wcard.raceweek .wnum { color: var(--violet); }
+
+.wpill {
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.pill-n { background: var(--border2); color: var(--muted); }
+.pill-d { background: #3A2E0A; color: var(--amber); }
+.pill-r { background: var(--violet-d); color: white; }
+
+.wchev {
+  color: var(--dim);
+  font-size: 14px;
+  transition: transform .2s;
+  line-height: 1;
+}
+.wcard.open .wchev { transform: rotate(180deg); }
+.wdays { display: none; }
+.wcard.open .wdays { display: block; }
+
+/* ── DAY ── */
+.ditem {
+  padding: 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.ditem:last-child { border-bottom: none; }
+
+.dcheck {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--border2);
+  flex-shrink: 0;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .2s;
+  margin-top: 2px;
+  background: transparent;
+  -webkit-tap-highlight-color: transparent;
+  font-size: 11px;
+  font-weight: 700;
+  color: transparent;
+}
+.dcheck.done {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--bg);
+}
+.dcheck.done::after { content: '✓'; }
+
+.dbody { flex: 1; min-width: 0; }
+.dhdr { display: flex; align-items: center; gap: 7px; margin-bottom: 10px; flex-wrap: wrap; }
+.dname {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.dtag {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.t-fondo    { background: var(--green-bg);  color: var(--green); }
+.t-int      { background: var(--violet-bg); color: var(--violet); }
+.t-tempo    { background: var(--blue-bg);   color: var(--blue); }
+.t-suave    { background: var(--bg3);       color: var(--muted); }
+.t-prog     { background: var(--amber-bg);  color: var(--amber); }
+.t-carrera  { background: var(--violet-d);  color: white; }
+
+/* ── WORKOUT ── */
+.wkwrap { display: flex; flex-direction: column; gap: 4px; }
+
+/* Step row */
+.srow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg3);
+  border-radius: 6px;
+  padding: 8px 11px;
+  border-left: 2px solid var(--border2);
+}
+.srow.wu, .srow.cd { border-left-color: var(--green); }
+.srow.run { border-left-color: var(--blue); }
+.slabel { font-size: 12px; color: var(--muted); flex: 1; min-width: 0; }
+.slabel strong { color: var(--text); font-weight: 500; }
+.space {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.sp-g { color: var(--green); }
+.sp-b { color: var(--blue); }
+.sp-v { color: var(--violet); }
+.sp-a { color: var(--amber); }
+.srange { font-size: 10px; color: var(--muted); flex-shrink: 0; }
+.sdur {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  flex-shrink: 0;
+  border: 1px solid var(--border2);
+  border-radius: 3px;
+  padding: 1px 5px;
+}
+
+/* Interval set */
+.iset {
+  background: var(--bg3);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.iset-hdr {
+  padding: 5px 11px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.irow {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--border);
+}
+.irow:last-child { border-bottom: none; }
+.ibar { width: 2px; flex-shrink: 0; }
+.ibar-r { background: var(--blue); }
+.ibar-j { background: var(--green); }
+.ibar-w { background: var(--amber); }
+.ibar-v { background: var(--violet); }
+.ibody {
+  flex: 1;
+  padding: 9px 11px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.itype {
+  font-size: 12px;
+  font-weight: 500;
+  flex: 1;
+  min-width: 0;
+}
+.it-r { color: var(--blue); }
+.it-j { color: var(--green); }
+.it-w { color: var(--amber); }
+.it-v { color: var(--violet); }
+.idur {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  border: 1px solid var(--border2);
+  border-radius: 3px;
+  padding: 1px 5px;
+  white-space: nowrap;
+}
+.ipace-wrap { text-align: right; flex-shrink: 0; }
+.ipace {
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  display: block;
+  letter-spacing: -0.01em;
+}
+.irange { font-size: 10px; color: var(--muted); display: block; }
+
+/* Progression */
+.progwrap {
+  background: var(--bg3);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.prog-hdr-lbl {
+  padding: 5px 11px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.prow {
+  display: flex;
+  align-items: center;
+  padding: 9px 11px;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.prow:last-child { border-bottom: none; }
+.pdot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.pkm { font-size: 12px; color: var(--muted); min-width: 68px; }
+.parrow { color: var(--border2); font-size: 12px; }
+.ppace {
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.prange { font-size: 10px; color: var(--muted); margin-left: auto; }
+
+/* ── RACE ── */
+.race-card {
+  margin: 0 1rem 0.75rem;
+  background: var(--violet-bg);
+  border: 1px solid var(--violet-d);
+  border-radius: 10px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.race-card::after {
+  content: '🏁';
+  font-size: 8rem;
+  position: absolute;
+  right: -1rem; bottom: -2rem;
+  opacity: 0.06;
+}
+.race-ey {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--violet);
+  margin-bottom: 4px;
+}
+.race-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 1.1rem;
+}
+.race-segs { display: flex; flex-direction: column; gap: 5px; }
+.rseg {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 6px;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.rseg-km { font-size: 12px; color: var(--muted); }
+.rseg-pace {
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--violet);
+}
+
+/* ── TIPS ── */
+.tips-card {
+  margin: 0 1rem 0.75rem;
+  background: var(--green-bg);
+  border: 1px solid #1A4A32;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+}
+.tips-ttl {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.tips-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.tips-list li {
+  font-size: 12px;
+  color: #7EC9A8;
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.5;
+}
+.tips-list li::before { content: '—'; position: absolute; left: 0; color: var(--green); }
+
+/* ── MOTO ── */
+.moto {
+  padding: 2.5rem 1.5rem 1rem;
+  text-align: center;
+}
+.moto-t {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(1.4rem, 6vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: 1.15;
+}
+.moto-t em { color: var(--violet); font-style: normal; }
 </style>
 </head>
 <body>
 
+<!-- HERO -->
 <div class="hero">
-  <p class="hero-eyebrow">Objetivo personal</p>
-  <h1 class="hero-title">Plan<br><em>15K</em></h1>
-  <div class="hero-chips">
-    <span class="hero-chip"><strong>Inicio</strong> 24 mar 2026</span>
-    <span class="hero-chip"><strong>Carrera</strong> 07 jun 2026</span>
-    <span class="hero-chip"><strong>Objetivo</strong> 5:40/km — 1h25</span>
-    <span class="hero-chip"><strong>Días</strong> Lun · Mié · Sáb</span>
+  <p class="hero-eyebrow">Plan de entrenamiento</p>
+  <h1 class="hero-title">PLAN<br>15K</h1>
+  <p class="hero-sub">→ 5:40 /km</p>
+  <div class="hero-meta">
+    <span class="meta-chip"><strong>Inicio</strong> 24 mar 2026</span>
+    <span class="meta-chip"><strong>Carrera</strong> 07 jun 2026</span>
+    <span class="meta-chip"><strong>Meta</strong> 1h 25min</span>
+    <span class="meta-chip"><strong>Días</strong> Lun · Mié · Sáb</span>
   </div>
 </div>
 
-<div class="progress-bar-wrap">
+<!-- PROGRESS -->
+<div class="prog-bar">
   <div class="prog-track"><div class="prog-fill" id="pf" style="width:0%"></div></div>
-  <div class="prog-label"><span id="pd">0</span> / 30</div>
+  <div class="prog-label"><span id="pd">0</span>/30 completados</div>
 </div>
 
-<div class="paces-section">
-  <p class="eyebrow">Ritmos de referencia</p>
+<!-- PACES -->
+<div class="paces">
+  <p class="section-label">Ritmos de referencia</p>
   <div class="paces-grid">
-    <div class="pc pc-s"><div class="pc-name">Suave · fondo</div><div class="pc-val">6:30</div><div class="pc-range">6:15–6:50 /km</div></div>
-    <div class="pc pc-t"><div class="pc-name">Tempo</div><div class="pc-val">5:40</div><div class="pc-range">5:35–5:45 /km</div></div>
-    <div class="pc pc-c"><div class="pc-name">Ritmo carrera</div><div class="pc-val">5:40</div><div class="pc-range">5:35–5:45 /km</div></div>
-    <div class="pc pc-f"><div class="pc-name">Fuerte · intervalos</div><div class="pc-val">5:10</div><div class="pc-range">5:00–5:20 /km</div></div>
+    <div class="pace-tile pt-g">
+      <div class="pace-tile-name">Suave · fondo</div>
+      <div class="pace-tile-val">6:30</div>
+      <div class="pace-tile-range">6:15–6:50 /km</div>
+    </div>
+    <div class="pace-tile pt-b">
+      <div class="pace-tile-name">Tempo</div>
+      <div class="pace-tile-val">5:40</div>
+      <div class="pace-tile-range">5:35–5:45 /km</div>
+    </div>
+    <div class="pace-tile pt-b">
+      <div class="pace-tile-name">Ritmo carrera</div>
+      <div class="pace-tile-val">5:40</div>
+      <div class="pace-tile-range">5:35–5:45 /km</div>
+    </div>
+    <div class="pace-tile pt-v">
+      <div class="pace-tile-name">Fuerte · intervalos</div>
+      <div class="pace-tile-val">5:10</div>
+      <div class="pace-tile-range">5:00–5:20 /km</div>
+    </div>
   </div>
 </div>
 
-<div class="weeks-wrap">
-<p class="outer-label">Plan semana a semana</p>
+<!-- WEEKS -->
+<div class="weeks">
+<p class="weeks-label">Semanas</p>
 
-<!-- helpers: irow(bar,type,label,dur,pace,range) -->
+<!-- helpers inline -->
+<!-- irow: bar class, type class, label, dur, pace color, pace val, range -->
 
 <!-- S1 -->
-<div class="week-card" id="w1">
-  <div class="week-hdr" onclick="tw('w1')"><div class="week-hdr-l"><span class="wk-num">Semana 1</span><span class="wk-pill pill-n">24–28 mar</span></div><span class="wk-chev">▾</span></div>
-  <div class="week-days">
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Lunes</span><span class="dtag t-tempo">Tempo</span></div>
-      <div class="wk-wrap">
-        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="space sp-t">6:30</span><span class="srange">10'</span></div>
+<div class="wcard" id="w1">
+  <div class="whdr" onclick="tw('w1')"><div class="whdr-l"><span class="wnum">Semana 01</span><span class="wpill pill-n">24–28 mar</span></div><span class="wchev">▾</span></div>
+  <div class="wdays">
+
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo</span></div>
+      <div class="wkwrap">
+        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">6 series</div>
-          <div class="irow"><div class="ibar ibar-r"></div><div class="ibody"><span class="itype it-r">🏃 Correr</span><span class="idur">2:00</span><div class="ipace-wrap"><span class="ipace sp-c">5:40</span><span class="irange">5:35–5:45</span></div></div></div>
-          <div class="irow"><div class="ibar ibar-j"></div><div class="ibody"><span class="itype it-j">🚶 Trotar</span><span class="idur">2:00</span><div class="ipace-wrap"><span class="ipace sp-t">6:30</span><span class="irange">6:15–6:50</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-r"></div><div class="ibody"><span class="itype it-r">Correr</span><span class="idur">2:00 min</span><div class="ipace-wrap"><span class="ipace sp-b">5:40</span><span class="irange">5:35–5:45</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-j"></div><div class="ibody"><span class="itype it-j">Trotar</span><span class="idur">2:00 min</span><div class="ipace-wrap"><span class="ipace sp-g">6:30</span><span class="irange">6:15–6:50</span></div></div></div>
         </div>
-        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="space sp-t">6:40</span><span class="srange">10'</span></div>
+        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:40</span></div>
       </div>
     </div></div>
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Miércoles</span><span class="dtag t-suave">Continuo</span></div>
-      <div class="wk-wrap">
-        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="space sp-t">6:30</span><span class="srange">10'</span></div>
+
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Continuo</span></div>
+      <div class="wkwrap">
+        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">3 series</div>
-          <div class="irow"><div class="ibar ibar-r"></div><div class="ibody"><span class="itype it-r">🏃 Correr</span><span class="idur">5:00</span><div class="ipace-wrap"><span class="ipace sp-c">6:00</span><span class="irange">5:50–6:10</span></div></div></div>
-          <div class="irow"><div class="ibar ibar-j"></div><div class="ibody"><span class="itype it-j">🚶 Trotar</span><span class="idur">3:00</span><div class="ipace-wrap"><span class="ipace sp-t">6:30</span><span class="irange">6:15–6:50</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-r"></div><div class="ibody"><span class="itype it-r">Correr</span><span class="idur">5:00 min</span><div class="ipace-wrap"><span class="ipace sp-b">6:00</span><span class="irange">5:50–6:10</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-j"></div><div class="ibody"><span class="itype it-j">Trotar</span><span class="idur">3:00 min</span><div class="ipace-wrap"><span class="ipace sp-g">6:30</span><span class="irange">6:15–6:50</span></div></div></div>
         </div>
-        <div class="srow run"><span class="slabel"><strong>Continuar suave</strong> hasta completar 45' total</span><span class="space sp-t">6:30</span></div>
+        <div class="srow run"><span class="slabel"><strong>Continuar suave</strong> hasta 45 min total</span><span class="space sp-g">6:30</span></div>
       </div>
     </div></div>
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Sábado</span><span class="dtag t-fondo">Fondo</span></div>
-      <div class="wk-wrap"><div class="srow run"><span class="slabel"><strong>10 km</strong> continuo</span><span class="space sp-t">6:30</span><span class="srange">6:15–6:50</span></div></div>
+
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Sábado</span><span class="dtag t-fondo">Fondo</span></div>
+      <div class="wkwrap">
+        <div class="srow run"><span class="slabel"><strong>10 km</strong> continuo</span><span class="space sp-g">6:30</span><span class="srange">6:15–6:50</span></div>
+      </div>
     </div></div>
+
   </div>
 </div>
 
 <!-- S2 -->
-<div class="week-card" id="w2">
-  <div class="week-hdr" onclick="tw('w2')"><div class="week-hdr-l"><span class="wk-num">Semana 2</span><span class="wk-pill pill-n">30 mar–4 abr</span></div><span class="wk-chev">▾</span></div>
-  <div class="week-days">
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Lunes</span><span class="dtag t-tempo">Tempo</span></div>
-      <div class="wk-wrap">
-        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="space sp-t">6:30</span><span class="srange">10'</span></div>
+<div class="wcard" id="w2">
+  <div class="whdr" onclick="tw('w2')"><div class="whdr-l"><span class="wnum">Semana 02</span><span class="wpill pill-n">30 mar–4 abr</span></div><span class="wchev">▾</span></div>
+  <div class="wdays">
+
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo</span></div>
+      <div class="wkwrap">
+        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">5 series</div>
-          <div class="irow"><div class="ibar ibar-r"></div><div class="ibody"><span class="itype it-r">🏃 Correr</span><span class="idur">3:00</span><div class="ipace-wrap"><span class="ipace sp-c">5:40</span><span class="irange">5:35–5:45</span></div></div></div>
-          <div class="irow"><div class="ibar ibar-j"></div><div class="ibody"><span class="itype it-j">🚶 Trotar</span><span class="idur">2:00</span><div class="ipace-wrap"><span class="ipace sp-t">6:30</span><span class="irange">suave</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-r"></div><div class="ibody"><span class="itype it-r">Correr</span><span class="idur">3:00 min</span><div class="ipace-wrap"><span class="ipace sp-b">5:40</span><span class="irange">5:35–5:45</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-j"></div><div class="ibody"><span class="itype it-j">Trotar</span><span class="idur">2:00 min</span><div class="ipace-wrap"><span class="ipace sp-g">6:30</span><span class="irange">suave</span></div></div></div>
         </div>
-        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="space sp-t">6:40</span><span class="srange">10'</span></div>
+        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:40</span></div>
       </div>
     </div></div>
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Miércoles</span><span class="dtag t-suave">Fondo + strides</span></div>
-      <div class="wk-wrap">
-        <div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="space sp-t">6:30</span><span class="srange">40'</span></div>
+
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Fondo + strides</span></div>
+      <div class="wkwrap">
+        <div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="sdur">40 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">4 strides</div>
-          <div class="irow"><div class="ibar ibar-r"></div><div class="ibody"><span class="itype it-r">🏃 Correr fuerte</span><span class="idur">0:20</span><div class="ipace-wrap"><span class="ipace sp-p">4:50</span><span class="irange">4:40–5:00</span></div></div></div>
-          <div class="irow"><div class="ibar ibar-w"></div><div class="ibody"><span class="itype it-w">🚶 Caminar / trotar</span><span class="idur">1:00</span><div class="ipace-wrap"><span class="ipace sp-a">—</span><span class="irange">recuperar</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-v"></div><div class="ibody"><span class="itype it-v">Correr fuerte</span><span class="idur">0:20 seg</span><div class="ipace-wrap"><span class="ipace sp-v">4:50</span><span class="irange">4:40–5:00</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-w"></div><div class="ibody"><span class="itype it-w">Caminar / trotar</span><span class="idur">1:00 min</span><div class="ipace-wrap"><span class="ipace sp-a">—</span><span class="irange">recuperar</span></div></div></div>
         </div>
       </div>
     </div></div>
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Sábado</span><span class="dtag t-prog">Fondo progresivo</span></div>
-      <div class="wk-wrap"><div class="prog-wrap"><div class="prog-hdr">11 km progresivos</div>
-        <div class="prow"><span class="pdot" style="background:var(--teal)"></span><span class="pkm">Km 1 – 9</span><span class="parrow">→</span><span class="ppace sp-t">6:30</span><span class="prange">6:15–6:50</span></div>
-        <div class="prow"><span class="pdot" style="background:var(--coral)"></span><span class="pkm">Km 10 – 11</span><span class="parrow">→</span><span class="ppace sp-c">6:00</span><span class="prange">5:50–6:10</span></div>
+
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Sábado</span><span class="dtag t-prog">Fondo progresivo</span></div>
+      <div class="wkwrap"><div class="progwrap"><div class="prog-hdr-lbl">11 km progresivos</div>
+        <div class="prow"><span class="pdot" style="background:var(--green)"></span><span class="pkm">Km 1 – 9</span><span class="parrow">→</span><span class="ppace sp-g">6:30</span><span class="prange">6:15–6:50</span></div>
+        <div class="prow"><span class="pdot" style="background:var(--blue)"></span><span class="pkm">Km 10 – 11</span><span class="parrow">→</span><span class="ppace sp-b">6:00</span><span class="prange">5:50–6:10</span></div>
       </div></div>
     </div></div>
+
   </div>
 </div>
 
 <!-- S3 -->
-<div class="week-card" id="w3">
-  <div class="week-hdr" onclick="tw('w3')"><div class="week-hdr-l"><span class="wk-num">Semana 3</span><span class="wk-pill pill-n">6–11 abr</span></div><span class="wk-chev">▾</span></div>
-  <div class="week-days">
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Lunes</span><span class="dtag t-tempo">Tempo</span></div>
-      <div class="wk-wrap">
-        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="space sp-t">6:30</span><span class="srange">10'</span></div>
+<div class="wcard" id="w3">
+  <div class="whdr" onclick="tw('w3')"><div class="whdr-l"><span class="wnum">Semana 03</span><span class="wpill pill-n">6–11 abr</span></div><span class="wchev">▾</span></div>
+  <div class="wdays">
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo</span></div>
+      <div class="wkwrap">
+        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">4 series</div>
-          <div class="irow"><div class="ibar ibar-r"></div><div class="ibody"><span class="itype it-r">🏃 Correr</span><span class="idur">5:00</span><div class="ipace-wrap"><span class="ipace sp-c">5:40</span><span class="irange">5:35–5:45</span></div></div></div>
-          <div class="irow"><div class="ibar ibar-j"></div><div class="ibody"><span class="itype it-j">🚶 Trotar</span><span class="idur">2:00</span><div class="ipace-wrap"><span class="ipace sp-t">6:30</span><span class="irange">suave</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-r"></div><div class="ibody"><span class="itype it-r">Correr</span><span class="idur">5:00 min</span><div class="ipace-wrap"><span class="ipace sp-b">5:40</span><span class="irange">5:35–5:45</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-j"></div><div class="ibody"><span class="itype it-j">Trotar</span><span class="idur">2:00 min</span><div class="ipace-wrap"><span class="ipace sp-g">6:30</span><span class="irange">suave</span></div></div></div>
         </div>
-        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="space sp-t">6:40</span><span class="srange">10'</span></div>
+        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:40</span></div>
       </div>
     </div></div>
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Miércoles</span><span class="dtag t-suave">Fondo</span></div>
-      <div class="wk-wrap"><div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="space sp-t">6:30</span><span class="srange">45'</span></div></div>
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Fondo</span></div>
+      <div class="wkwrap"><div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="sdur">45 min</span><span class="space sp-g">6:30</span></div></div>
     </div></div>
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Sábado</span><span class="dtag t-fondo">Fondo</span></div>
-      <div class="wk-wrap"><div class="srow run"><span class="slabel"><strong>12 km</strong> continuo</span><span class="space sp-t">6:30</span><span class="srange">6:15–6:50</span></div></div>
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Sábado</span><span class="dtag t-fondo">Fondo</span></div>
+      <div class="wkwrap"><div class="srow run"><span class="slabel"><strong>12 km</strong> continuo</span><span class="space sp-g">6:30</span><span class="srange">6:15–6:50</span></div></div>
     </div></div>
   </div>
 </div>
 
 <!-- S4 -->
-<div class="week-card" id="w4">
-  <div class="week-hdr" onclick="tw('w4')"><div class="week-hdr-l"><span class="wk-num">Semana 4</span><span class="wk-pill pill-n">13–18 abr</span></div><span class="wk-chev">▾</span></div>
-  <div class="week-days">
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Lunes</span><span class="dtag t-tempo">Tempo largo</span></div>
-      <div class="wk-wrap">
-        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="space sp-t">6:30</span><span class="srange">10'</span></div>
+<div class="wcard" id="w4">
+  <div class="whdr" onclick="tw('w4')"><div class="whdr-l"><span class="wnum">Semana 04</span><span class="wpill pill-n">13–18 abr</span></div><span class="wchev">▾</span></div>
+  <div class="wdays">
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo largo</span></div>
+      <div class="wkwrap">
+        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">3 series</div>
-          <div class="irow"><div class="ibar ibar-r"></div><div class="ibody"><span class="itype it-r">🏃 Correr</span><span class="idur">8:00</span><div class="ipace-wrap"><span class="ipace sp-c">5:40</span><span class="irange">5:35–5:45</span></div></div></div>
-          <div class="irow"><div class="ibar ibar-j"></div><div class="ibody"><span class="itype it-j">🚶 Trotar</span><span class="idur">3:00</span><div class="ipace-wrap"><span class="ipace sp-t">6:30</span><span class="irange">suave</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-r"></div><div class="ibody"><span class="itype it-r">Correr</span><span class="idur">8:00 min</span><div class="ipace-wrap"><span class="ipace sp-b">5:40</span><span class="irange">5:35–5:45</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-j"></div><div class="ibody"><span class="itype it-j">Trotar</span><span class="idur">3:00 min</span><div class="ipace-wrap"><span class="ipace sp-g">6:30</span><span class="irange">suave</span></div></div></div>
         </div>
-        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="space sp-t">6:40</span><span class="srange">10'</span></div>
+        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:40</span></div>
       </div>
     </div></div>
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Miércoles</span><span class="dtag t-suave">Fondo</span></div>
-      <div class="wk-wrap"><div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="space sp-t">6:30</span><span class="srange">50'</span></div></div>
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Fondo</span></div>
+      <div class="wkwrap"><div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="sdur">50 min</span><span class="space sp-g">6:30</span></div></div>
     </div></div>
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Sábado</span><span class="dtag t-prog">Fondo progresivo</span></div>
-      <div class="wk-wrap"><div class="prog-wrap"><div class="prog-hdr">12–13 km progresivos</div>
-        <div class="prow"><span class="pdot" style="background:var(--teal)"></span><span class="pkm">Km 1 – 5</span><span class="parrow">→</span><span class="ppace sp-t">6:30</span><span class="prange">6:15–6:50</span></div>
-        <div class="prow"><span class="pdot" style="background:var(--amber-mid)"></span><span class="pkm">Km 6 – 9</span><span class="parrow">→</span><span class="ppace sp-a">6:00</span><span class="prange">5:55–6:10</span></div>
-        <div class="prow"><span class="pdot" style="background:var(--coral)"></span><span class="pkm">Km 10 – 13</span><span class="parrow">→</span><span class="ppace sp-c">5:55</span><span class="prange">5:50–6:00</span></div>
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Sábado</span><span class="dtag t-prog">Fondo progresivo</span></div>
+      <div class="wkwrap"><div class="progwrap"><div class="prog-hdr-lbl">12–13 km progresivos</div>
+        <div class="prow"><span class="pdot" style="background:var(--green)"></span><span class="pkm">Km 1 – 5</span><span class="parrow">→</span><span class="ppace sp-g">6:30</span><span class="prange">6:15–6:50</span></div>
+        <div class="prow"><span class="pdot" style="background:var(--blue)"></span><span class="pkm">Km 6 – 9</span><span class="parrow">→</span><span class="ppace sp-b">6:00</span><span class="prange">5:55–6:10</span></div>
+        <div class="prow"><span class="pdot" style="background:var(--violet)"></span><span class="pkm">Km 10 – 13</span><span class="parrow">→</span><span class="ppace sp-v">5:55</span><span class="prange">5:50–6:00</span></div>
       </div></div>
     </div></div>
   </div>
 </div>
 
 <!-- S5 -->
-<div class="week-card" id="w5">
-  <div class="week-hdr" onclick="tw('w5')"><div class="week-hdr-l"><span class="wk-num">Semana 5</span><span class="wk-pill pill-n">20–25 abr</span></div><span class="wk-chev">▾</span></div>
-  <div class="week-days">
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Lunes</span><span class="dtag t-int">Intervalos</span></div>
-      <div class="wk-wrap">
-        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="space sp-t">6:30</span><span class="srange">10'</span></div>
+<div class="wcard" id="w5">
+  <div class="whdr" onclick="tw('w5')"><div class="whdr-l"><span class="wnum">Semana 05</span><span class="wpill pill-n">20–25 abr</span></div><span class="wchev">▾</span></div>
+  <div class="wdays">
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-int">Intervalos</span></div>
+      <div class="wkwrap">
+        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">4 series</div>
-          <div class="irow"><div class="ibar ibar-r"></div><div class="ibody"><span class="itype it-r">🏃 Correr</span><span class="idur">1 km</span><div class="ipace-wrap"><span class="ipace sp-p">5:10</span><span class="irange">5:00–5:20</span></div></div></div>
-          <div class="irow"><div class="ibar ibar-j"></div><div class="ibody"><span class="itype it-j">🚶 Trotar</span><span class="idur">2:30</span><div class="ipace-wrap"><span class="ipace sp-t">6:30</span><span class="irange">recuperar</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-v"></div><div class="ibody"><span class="itype it-v">Correr</span><span class="idur">1 km</span><div class="ipace-wrap"><span class="ipace sp-v">5:10</span><span class="irange">5:00–5:20</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-j"></div><div class="ibody"><span class="itype it-j">Trotar</span><span class="idur">2:30 min</span><div class="ipace-wrap"><span class="ipace sp-g">6:30</span><span class="irange">recuperar</span></div></div></div>
         </div>
-        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="space sp-t">6:40</span><span class="srange">10'</span></div>
+        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:40</span></div>
       </div>
     </div></div>
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Miércoles</span><span class="dtag t-tempo">Tempo</span></div>
-      <div class="wk-wrap">
-        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="space sp-t">6:30</span><span class="srange">10'</span></div>
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-tempo">Tempo</span></div>
+      <div class="wkwrap">
+        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">2 series</div>
-          <div class="irow"><div class="ibar ibar-r"></div><div class="ibody"><span class="itype it-r">🏃 Correr</span><span class="idur">10:00</span><div class="ipace-wrap"><span class="ipace sp-c">5:40</span><span class="irange">5:35–5:45</span></div></div></div>
-          <div class="irow"><div class="ibar ibar-j"></div><div class="ibody"><span class="itype it-j">🚶 Trotar</span><span class="idur">3:00</span><div class="ipace-wrap"><span class="ipace sp-t">6:30</span><span class="irange">suave</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-r"></div><div class="ibody"><span class="itype it-r">Correr</span><span class="idur">10:00 min</span><div class="ipace-wrap"><span class="ipace sp-b">5:40</span><span class="irange">5:35–5:45</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-j"></div><div class="ibody"><span class="itype it-j">Trotar</span><span class="idur">3:00 min</span><div class="ipace-wrap"><span class="ipace sp-g">6:30</span><span class="irange">suave</span></div></div></div>
         </div>
-        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="space sp-t">6:40</span><span class="srange">10'</span></div>
+        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:40</span></div>
       </div>
     </div></div>
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Sábado</span><span class="dtag t-fondo">Fondo</span></div>
-      <div class="wk-wrap"><div class="srow run"><span class="slabel"><strong>13 km</strong> continuo</span><span class="space sp-t">6:30</span><span class="srange">6:15–6:50</span></div></div>
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Sábado</span><span class="dtag t-fondo">Fondo</span></div>
+      <div class="wkwrap"><div class="srow run"><span class="slabel"><strong>13 km</strong> continuo</span><span class="space sp-g">6:30</span><span class="srange">6:15–6:50</span></div></div>
     </div></div>
   </div>
 </div>
 
 <!-- S6 -->
-<div class="week-card" id="w6">
-  <div class="week-hdr" onclick="tw('w6')"><div class="week-hdr-l"><span class="wk-num">Semana 6</span><span class="wk-pill pill-n">27 abr–2 may</span></div><span class="wk-chev">▾</span></div>
-  <div class="week-days">
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Lunes</span><span class="dtag t-tempo">Tempo</span></div>
-      <div class="wk-wrap">
-        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="space sp-t">6:30</span><span class="srange">10'</span></div>
+<div class="wcard" id="w6">
+  <div class="whdr" onclick="tw('w6')"><div class="whdr-l"><span class="wnum">Semana 06</span><span class="wpill pill-n">27 abr–2 may</span></div><span class="wchev">▾</span></div>
+  <div class="wdays">
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo</span></div>
+      <div class="wkwrap">
+        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">3 series</div>
-          <div class="irow"><div class="ibar ibar-r"></div><div class="ibody"><span class="itype it-r">🏃 Correr</span><span class="idur">2 km</span><div class="ipace-wrap"><span class="ipace sp-c">5:40</span><span class="irange">5:35–5:45</span></div></div></div>
-          <div class="irow"><div class="ibar ibar-j"></div><div class="ibody"><span class="itype it-j">🚶 Trotar</span><span class="idur">3:00</span><div class="ipace-wrap"><span class="ipace sp-t">6:30</span><span class="irange">suave</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-r"></div><div class="ibody"><span class="itype it-r">Correr</span><span class="idur">2 km</span><div class="ipace-wrap"><span class="ipace sp-b">5:40</span><span class="irange">5:35–5:45</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-j"></div><div class="ibody"><span class="itype it-j">Trotar</span><span class="idur">3:00 min</span><div class="ipace-wrap"><span class="ipace sp-g">6:30</span><span class="irange">suave</span></div></div></div>
         </div>
-        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="space sp-t">6:40</span><span class="srange">10'</span></div>
+        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:40</span></div>
       </div>
     </div></div>
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Miércoles</span><span class="dtag t-suave">Fondo</span></div>
-      <div class="wk-wrap"><div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="space sp-t">6:30</span><span class="srange">50'</span></div></div>
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Fondo</span></div>
+      <div class="wkwrap"><div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="sdur">50 min</span><span class="space sp-g">6:30</span></div></div>
     </div></div>
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Sábado</span><span class="dtag t-prog">Fondo progresivo</span></div>
-      <div class="wk-wrap"><div class="prog-wrap"><div class="prog-hdr">14 km progresivos</div>
-        <div class="prow"><span class="pdot" style="background:var(--teal)"></span><span class="pkm">Km 1 – 6</span><span class="parrow">→</span><span class="ppace sp-t">6:30</span><span class="prange">6:15–6:50</span></div>
-        <div class="prow"><span class="pdot" style="background:var(--amber-mid)"></span><span class="pkm">Km 7 – 10</span><span class="parrow">→</span><span class="ppace sp-a">6:00</span><span class="prange">5:55–6:10</span></div>
-        <div class="prow"><span class="pdot" style="background:var(--coral)"></span><span class="pkm">Km 11 – 14</span><span class="parrow">→</span><span class="ppace sp-c">5:45</span><span class="prange">5:40–5:50</span></div>
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Sábado</span><span class="dtag t-prog">Fondo progresivo</span></div>
+      <div class="wkwrap"><div class="progwrap"><div class="prog-hdr-lbl">14 km progresivos</div>
+        <div class="prow"><span class="pdot" style="background:var(--green)"></span><span class="pkm">Km 1 – 6</span><span class="parrow">→</span><span class="ppace sp-g">6:30</span><span class="prange">6:15–6:50</span></div>
+        <div class="prow"><span class="pdot" style="background:var(--blue)"></span><span class="pkm">Km 7 – 10</span><span class="parrow">→</span><span class="ppace sp-b">6:00</span><span class="prange">5:55–6:10</span></div>
+        <div class="prow"><span class="pdot" style="background:var(--violet)"></span><span class="pkm">Km 11 – 14</span><span class="parrow">→</span><span class="ppace sp-v">5:45</span><span class="prange">5:40–5:50</span></div>
       </div></div>
     </div></div>
   </div>
 </div>
 
 <!-- S7 DESCARGA -->
-<div class="week-card descarga" id="w7">
-  <div class="week-hdr" onclick="tw('w7')"><div class="week-hdr-l"><span class="wk-num">Semana 7</span><span class="wk-pill pill-d">Descarga</span></div><span class="wk-chev">▾</span></div>
-  <div class="week-days">
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Lunes</span><span class="dtag t-tempo">Tempo corto</span></div>
-      <div class="wk-wrap">
-        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="space sp-t">6:30</span><span class="srange">10'</span></div>
-        <div class="srow run"><span class="slabel"><strong>Correr</strong></span><span class="space sp-c">5:40</span><span class="srange">20'</span></div>
-        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="space sp-t">6:40</span><span class="srange">10'</span></div>
+<div class="wcard descarga" id="w7">
+  <div class="whdr" onclick="tw('w7')"><div class="whdr-l"><span class="wnum">Semana 07</span><span class="wpill pill-d">Descarga</span></div><span class="wchev">▾</span></div>
+  <div class="wdays">
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo corto</span></div>
+      <div class="wkwrap">
+        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
+        <div class="srow run"><span class="slabel"><strong>Correr</strong></span><span class="sdur">20 min</span><span class="space sp-b">5:40</span></div>
+        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:40</span></div>
       </div>
     </div></div>
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Miércoles</span><span class="dtag t-suave">Fondo</span></div>
-      <div class="wk-wrap"><div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="space sp-t">6:30</span><span class="srange">45'</span></div></div>
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Fondo</span></div>
+      <div class="wkwrap"><div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="sdur">45 min</span><span class="space sp-g">6:30</span></div></div>
     </div></div>
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Sábado</span><span class="dtag t-fondo">Fondo</span></div>
-      <div class="wk-wrap"><div class="srow run"><span class="slabel"><strong>12 km</strong> continuo</span><span class="space sp-t">6:30</span><span class="srange">6:15–6:50</span></div></div>
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Sábado</span><span class="dtag t-fondo">Fondo</span></div>
+      <div class="wkwrap"><div class="srow run"><span class="slabel"><strong>12 km</strong> continuo</span><span class="space sp-g">6:30</span><span class="srange">6:15–6:50</span></div></div>
     </div></div>
   </div>
 </div>
 
 <!-- S8 -->
-<div class="week-card" id="w8">
-  <div class="week-hdr" onclick="tw('w8')"><div class="week-hdr-l"><span class="wk-num">Semana 8</span><span class="wk-pill pill-n">11–16 may</span></div><span class="wk-chev">▾</span></div>
-  <div class="week-days">
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Lunes</span><span class="dtag t-tempo">Tempo 5K</span></div>
-      <div class="wk-wrap">
-        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="space sp-t">6:30</span><span class="srange">10'</span></div>
-        <div class="srow run"><span class="slabel"><strong>5 km</strong> continuo</span><span class="space sp-c">5:40</span><span class="srange">5:35–5:45</span></div>
-        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="space sp-t">6:40</span><span class="srange">10'</span></div>
+<div class="wcard" id="w8">
+  <div class="whdr" onclick="tw('w8')"><div class="whdr-l"><span class="wnum">Semana 08</span><span class="wpill pill-n">11–16 may</span></div><span class="wchev">▾</span></div>
+  <div class="wdays">
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo 5K</span></div>
+      <div class="wkwrap">
+        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
+        <div class="srow run"><span class="slabel"><strong>5 km</strong> continuo</span><span class="space sp-b">5:40</span><span class="srange">5:35–5:45</span></div>
+        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:40</span></div>
       </div>
     </div></div>
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Miércoles</span><span class="dtag t-suave">Fondo</span></div>
-      <div class="wk-wrap"><div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="space sp-t">6:30</span><span class="srange">45'</span></div></div>
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Fondo</span></div>
+      <div class="wkwrap"><div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="sdur">45 min</span><span class="space sp-g">6:30</span></div></div>
     </div></div>
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Sábado</span><span class="dtag t-prog">Fondo progresivo</span></div>
-      <div class="wk-wrap"><div class="prog-wrap"><div class="prog-hdr">14 km progresivos</div>
-        <div class="prow"><span class="pdot" style="background:var(--teal)"></span><span class="pkm">Km 1 – 6</span><span class="parrow">→</span><span class="ppace sp-t">6:30</span><span class="prange">6:15–6:50</span></div>
-        <div class="prow"><span class="pdot" style="background:var(--amber-mid)"></span><span class="pkm">Km 7 – 9</span><span class="parrow">→</span><span class="ppace sp-a">6:00</span><span class="prange">5:55–6:10</span></div>
-        <div class="prow"><span class="pdot" style="background:var(--coral)"></span><span class="pkm">Km 10 – 14</span><span class="parrow">→</span><span class="ppace sp-c">5:45</span><span class="prange">5:40–5:50</span></div>
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Sábado</span><span class="dtag t-prog">Fondo progresivo</span></div>
+      <div class="wkwrap"><div class="progwrap"><div class="prog-hdr-lbl">14 km progresivos</div>
+        <div class="prow"><span class="pdot" style="background:var(--green)"></span><span class="pkm">Km 1 – 6</span><span class="parrow">→</span><span class="ppace sp-g">6:30</span><span class="prange">6:15–6:50</span></div>
+        <div class="prow"><span class="pdot" style="background:var(--blue)"></span><span class="pkm">Km 7 – 9</span><span class="parrow">→</span><span class="ppace sp-b">6:00</span><span class="prange">5:55–6:10</span></div>
+        <div class="prow"><span class="pdot" style="background:var(--violet)"></span><span class="pkm">Km 10 – 14</span><span class="parrow">→</span><span class="ppace sp-v">5:45</span><span class="prange">5:40–5:50</span></div>
       </div></div>
     </div></div>
   </div>
 </div>
 
 <!-- S9 -->
-<div class="week-card" id="w9">
-  <div class="week-hdr" onclick="tw('w9')"><div class="week-hdr-l"><span class="wk-num">Semana 9</span><span class="wk-pill pill-n">18–23 may</span></div><span class="wk-chev">▾</span></div>
-  <div class="week-days">
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Lunes</span><span class="dtag t-tempo">Tempo</span></div>
-      <div class="wk-wrap">
-        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="space sp-t">6:30</span><span class="srange">10'</span></div>
+<div class="wcard" id="w9">
+  <div class="whdr" onclick="tw('w9')"><div class="whdr-l"><span class="wnum">Semana 09</span><span class="wpill pill-n">18–23 may</span></div><span class="wchev">▾</span></div>
+  <div class="wdays">
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo</span></div>
+      <div class="wkwrap">
+        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">3 series</div>
-          <div class="irow"><div class="ibar ibar-r"></div><div class="ibody"><span class="itype it-r">🏃 Correr</span><span class="idur">2 km</span><div class="ipace-wrap"><span class="ipace sp-c">5:40</span><span class="irange">5:35–5:45</span></div></div></div>
-          <div class="irow"><div class="ibar ibar-j"></div><div class="ibody"><span class="itype it-j">🚶 Trotar</span><span class="idur">3:00</span><div class="ipace-wrap"><span class="ipace sp-t">6:30</span><span class="irange">suave</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-r"></div><div class="ibody"><span class="itype it-r">Correr</span><span class="idur">2 km</span><div class="ipace-wrap"><span class="ipace sp-b">5:40</span><span class="irange">5:35–5:45</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-j"></div><div class="ibody"><span class="itype it-j">Trotar</span><span class="idur">3:00 min</span><div class="ipace-wrap"><span class="ipace sp-g">6:30</span><span class="irange">suave</span></div></div></div>
         </div>
-        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="space sp-t">6:40</span><span class="srange">10'</span></div>
+        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:40</span></div>
       </div>
     </div></div>
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Miércoles</span><span class="dtag t-suave">Fondo</span></div>
-      <div class="wk-wrap"><div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="space sp-t">6:30</span><span class="srange">40'</span></div></div>
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Fondo</span></div>
+      <div class="wkwrap"><div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="sdur">40 min</span><span class="space sp-g">6:30</span></div></div>
     </div></div>
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Sábado</span><span class="dtag t-prog">Progresivo</span></div>
-      <div class="wk-wrap"><div class="prog-wrap"><div class="prog-hdr">12 km progresivos</div>
-        <div class="prow"><span class="pdot" style="background:var(--teal)"></span><span class="pkm">Km 1 – 4</span><span class="parrow">→</span><span class="ppace sp-t">6:20</span><span class="prange">6:10–6:30</span></div>
-        <div class="prow"><span class="pdot" style="background:var(--amber-mid)"></span><span class="pkm">Km 5 – 8</span><span class="parrow">→</span><span class="ppace sp-a">6:00</span><span class="prange">5:55–6:10</span></div>
-        <div class="prow"><span class="pdot" style="background:var(--coral)"></span><span class="pkm">Km 9 – 12</span><span class="parrow">→</span><span class="ppace sp-c">5:40</span><span class="prange">5:35–5:45</span></div>
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Sábado</span><span class="dtag t-prog">Progresivo</span></div>
+      <div class="wkwrap"><div class="progwrap"><div class="prog-hdr-lbl">12 km progresivos</div>
+        <div class="prow"><span class="pdot" style="background:var(--green)"></span><span class="pkm">Km 1 – 4</span><span class="parrow">→</span><span class="ppace sp-g">6:20</span><span class="prange">6:10–6:30</span></div>
+        <div class="prow"><span class="pdot" style="background:var(--blue)"></span><span class="pkm">Km 5 – 8</span><span class="parrow">→</span><span class="ppace sp-b">6:00</span><span class="prange">5:55–6:10</span></div>
+        <div class="prow"><span class="pdot" style="background:var(--violet)"></span><span class="pkm">Km 9 – 12</span><span class="parrow">→</span><span class="ppace sp-v">5:40</span><span class="prange">5:35–5:45</span></div>
       </div></div>
     </div></div>
   </div>
 </div>
 
 <!-- S10 -->
-<div class="week-card raceweek" id="w10">
-  <div class="week-hdr" onclick="tw('w10')"><div class="week-hdr-l"><span class="wk-num">Semana 10</span><span class="wk-pill pill-r">Semana de carrera</span></div><span class="wk-chev">▾</span></div>
-  <div class="week-days">
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Lunes</span><span class="dtag t-suave">Activación</span></div>
-      <div class="wk-wrap">
-        <div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="space sp-t">6:30</span><span class="srange">35'</span></div>
+<div class="wcard raceweek" id="w10">
+  <div class="whdr" onclick="tw('w10')"><div class="whdr-l"><span class="wnum">Semana 10</span><span class="wpill pill-r">Semana de carrera</span></div><span class="wchev">▾</span></div>
+  <div class="wdays">
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-suave">Activación</span></div>
+      <div class="wkwrap">
+        <div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="sdur">35 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">3 strides</div>
-          <div class="irow"><div class="ibar ibar-r"></div><div class="ibody"><span class="itype it-r">🏃 Correr rápido</span><span class="idur">0:20</span><div class="ipace-wrap"><span class="ipace sp-p">fuerte</span><span class="irange">—</span></div></div></div>
-          <div class="irow"><div class="ibar ibar-j"></div><div class="ibody"><span class="itype it-j">🚶 Trotar / caminar</span><span class="idur">1:00</span><div class="ipace-wrap"><span class="ipace sp-t">suave</span><span class="irange">recuperar</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-v"></div><div class="ibody"><span class="itype it-v">Correr rápido</span><span class="idur">0:20 seg</span><div class="ipace-wrap"><span class="ipace sp-v">fuerte</span><span class="irange">—</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-w"></div><div class="ibody"><span class="itype it-w">Caminar / trotar</span><span class="idur">1:00 min</span><div class="ipace-wrap"><span class="ipace sp-g">suave</span><span class="irange">recuperar</span></div></div></div>
         </div>
       </div>
     </div></div>
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Miércoles</span><span class="dtag t-tempo">Confirmación</span></div>
-      <div class="wk-wrap">
-        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="space sp-t">6:30</span><span class="srange">10'</span></div>
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-tempo">Confirmación</span></div>
+      <div class="wkwrap">
+        <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">2 series</div>
-          <div class="irow"><div class="ibar ibar-r"></div><div class="ibody"><span class="itype it-r">🏃 Correr</span><span class="idur">1 km</span><div class="ipace-wrap"><span class="ipace sp-c">5:40</span><span class="irange">5:35–5:45</span></div></div></div>
-          <div class="irow"><div class="ibar ibar-j"></div><div class="ibody"><span class="itype it-j">🚶 Trotar</span><span class="idur">3:00</span><div class="ipace-wrap"><span class="ipace sp-t">6:30</span><span class="irange">suave</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-r"></div><div class="ibody"><span class="itype it-r">Correr</span><span class="idur">1 km</span><div class="ipace-wrap"><span class="ipace sp-b">5:40</span><span class="irange">5:35–5:45</span></div></div></div>
+          <div class="irow"><div class="ibar ibar-j"></div><div class="ibody"><span class="itype it-j">Trotar</span><span class="idur">3:00 min</span><div class="ipace-wrap"><span class="ipace sp-g">6:30</span><span class="irange">suave</span></div></div></div>
         </div>
-        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="space sp-t">6:40</span><span class="srange">10'</span></div>
+        <div class="srow cd"><span class="slabel"><strong>Vuelta a la calma</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:40</span></div>
       </div>
     </div></div>
-    <div class="day-item"><div class="day-check" onclick="td(this)"></div><div class="day-body">
-      <div class="day-hdr"><span class="day-name">Sábado</span><span class="dtag t-suave">Trote suave</span></div>
-      <div class="wk-wrap"><div class="srow run"><span class="slabel"><strong>Piernas descansadas</strong></span><span class="space sp-t">6:40</span><span class="srange">20'</span></div></div>
+    <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
+      <div class="dhdr"><span class="dname">Sábado</span><span class="dtag t-suave">Trote suave</span></div>
+      <div class="wkwrap"><div class="srow run"><span class="slabel"><strong>Piernas descansadas</strong></span><span class="sdur">20 min</span><span class="space sp-g">6:40</span></div></div>
     </div></div>
   </div>
 </div>
 
-</div><!-- /weeks-wrap -->
+</div><!-- /weeks -->
 
 <!-- RACE -->
-<div class="race-card" style="margin-top:1.25rem">
+<div class="race-card" style="margin-top:1rem">
   <p class="race-ey">Domingo 07 de junio de 2026</p>
-  <p class="race-title">Carrera 15K</p>
+  <p class="race-title">CARRERA 15K</p>
   <div class="race-segs">
-    <div class="rseg"><span class="rseg-km">Km 1–3 · Salida controlada</span><span class="rseg-pace">5:45</span></div>
-    <div class="rseg"><span class="rseg-km">Km 4–10 · Ritmo crucero</span><span class="rseg-pace">5:40</span></div>
-    <div class="rseg"><span class="rseg-km">Km 11–15 · Si hay resto ↗</span><span class="rseg-pace">5:35</span></div>
+    <div class="rseg"><span class="rseg-km">Km 1–3 · Salida controlada</span><span class="rseg-pace">5:45 /km</span></div>
+    <div class="rseg"><span class="rseg-km">Km 4–10 · Ritmo crucero</span><span class="rseg-pace">5:40 /km</span></div>
+    <div class="rseg"><span class="rseg-km">Km 11–15 · Si hay resto ↗</span><span class="rseg-pace">5:35 /km</span></div>
   </div>
 </div>
 
 <!-- TIPS -->
 <div class="tips-card">
-  <p class="tips-ttl">Claves del plan</p>
+  <p class="tips-ttl">Claves</p>
   <ul class="tips-list">
     <li>Tempo y ritmo carrera son iguales a propósito — el progreso es sostenerlo más tiempo</li>
     <li>El fondo construye la base — no se corre fuerte</li>
@@ -528,22 +940,21 @@
 
 <!-- MOTO -->
 <div class="moto">
-  <p class="moto-t">Cada kilómetro<br>te acerca al <em>7 de junio</em></p>
+  <p class="moto-t">Cada km<br>te acerca al<br><em>7 de junio</em></p>
 </div>
 
 <script>
-const SK='plan15k_v2';
+const SK='plan15k_v3';
 function ld(){try{return JSON.parse(localStorage.getItem(SK))||{};}catch(e){return{};}}
 function sv(d){try{localStorage.setItem(SK,JSON.stringify(d));}catch(e){}}
 function ub(){
-  var all=document.querySelectorAll('.day-check');
-  var done=document.querySelectorAll('.day-check.done').length;
+  var all=document.querySelectorAll('.dcheck');
+  var done=document.querySelectorAll('.dcheck.done').length;
   document.getElementById('pd').textContent=done;
   document.getElementById('pf').style.width=Math.round(done/all.length*100)+'%';
 }
 function td(el){
-  var d=ld();
-  var idx=Array.from(document.querySelectorAll('.day-check')).indexOf(el);
+  var d=ld(),idx=Array.from(document.querySelectorAll('.dcheck')).indexOf(el);
   el.classList.toggle('done');
   if(el.classList.contains('done'))d[idx]=1;else delete d[idx];
   sv(d);ub();
@@ -551,7 +962,7 @@ function td(el){
 function tw(id){document.getElementById(id).classList.toggle('open');}
 (function(){
   var d=ld();
-  document.querySelectorAll('.day-check').forEach(function(el,i){if(d[i])el.classList.add('done');});
+  document.querySelectorAll('.dcheck').forEach(function(el,i){if(d[i])el.classList.add('done');});
   document.getElementById('w1').classList.add('open');
   ub();
 })();
