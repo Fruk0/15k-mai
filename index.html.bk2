@@ -318,17 +318,6 @@ body {
 .t-prog     { background: var(--amber-bg);  color: var(--amber); }
 .t-carrera  { background: var(--violet-d);  color: white; }
 
-/* ── TIME BADGE ── */
-.dtime {
-  font-family: 'Space Mono', monospace;
-  font-size: 10px;
-  color: var(--muted);
-  border: 1px solid var(--border2);
-  border-radius: 3px;
-  padding: 2px 6px;
-  white-space: nowrap;
-}
-
 /* ── WORKOUT ── */
 .wkwrap { display: flex; flex-direction: column; gap: 4px; }
 
@@ -621,7 +610,7 @@ body {
   <div class="wdays">
 
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
-      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo</span><span class="dtime">44 min</span></div>
+      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo</span></div>
       <div class="wkwrap">
         <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">6 series</div>
@@ -633,7 +622,7 @@ body {
     </div></div>
 
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
-      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Continuo</span><span class="dtime">45 min</span></div>
+      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Continuo</span></div>
       <div class="wkwrap">
         <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">3 series</div>
@@ -660,7 +649,7 @@ body {
   <div class="wdays">
 
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
-      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo</span><span class="dtime">45 min</span></div>
+      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo</span></div>
       <div class="wkwrap">
         <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">5 series</div>
@@ -672,7 +661,7 @@ body {
     </div></div>
 
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
-      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Fondo + strides</span><span class="dtime">45 min</span></div>
+      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Fondo + strides</span></div>
       <div class="wkwrap">
         <div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="sdur">40 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">4 strides</div>
@@ -698,7 +687,7 @@ body {
   <div class="whdr" onclick="tw('w3')"><div class="whdr-l"><span class="wnum">Semana 03</span><span class="wpill pill-n">6–11 abr</span></div><span class="wchev">▾</span></div>
   <div class="wdays">
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
-      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo</span><span class="dtime">48 min</span></div>
+      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo</span></div>
       <div class="wkwrap">
         <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">4 series</div>
@@ -709,7 +698,7 @@ body {
       </div>
     </div></div>
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
-      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Fondo</span><span class="dtime">45 min</span></div>
+      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Fondo</span></div>
       <div class="wkwrap"><div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="sdur">45 min</span><span class="space sp-g">6:30</span></div></div>
     </div></div>
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
@@ -724,7 +713,7 @@ body {
   <div class="whdr" onclick="tw('w4')"><div class="whdr-l"><span class="wnum">Semana 04</span><span class="wpill pill-n">13–18 abr</span></div><span class="wchev">▾</span></div>
   <div class="wdays">
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
-      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo largo</span><span class="dtime">53 min</span></div>
+      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo largo</span></div>
       <div class="wkwrap">
         <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">3 series</div>
@@ -735,7 +724,7 @@ body {
       </div>
     </div></div>
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
-      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Fondo</span><span class="dtime">50 min</span></div>
+      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Fondo</span></div>
       <div class="wkwrap"><div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="sdur">50 min</span><span class="space sp-g">6:30</span></div></div>
     </div></div>
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
@@ -754,7 +743,7 @@ body {
   <div class="whdr" onclick="tw('w5')"><div class="whdr-l"><span class="wnum">Semana 05</span><span class="wpill pill-n">20–25 abr</span></div><span class="wchev">▾</span></div>
   <div class="wdays">
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
-      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-int">Intervalos</span><span class="dtime">50 min</span></div>
+      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-int">Intervalos</span></div>
       <div class="wkwrap">
         <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">4 series</div>
@@ -765,7 +754,7 @@ body {
       </div>
     </div></div>
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
-      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-tempo">Tempo</span><span class="dtime">46 min</span></div>
+      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-tempo">Tempo</span></div>
       <div class="wkwrap">
         <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">2 series</div>
@@ -787,7 +776,7 @@ body {
   <div class="whdr" onclick="tw('w6')"><div class="whdr-l"><span class="wnum">Semana 06</span><span class="wpill pill-n">27 abr–2 may</span></div><span class="wchev">▾</span></div>
   <div class="wdays">
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
-      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo</span><span class="dtime">59 min</span></div>
+      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo</span></div>
       <div class="wkwrap">
         <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">3 series</div>
@@ -798,7 +787,7 @@ body {
       </div>
     </div></div>
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
-      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Fondo</span><span class="dtime">50 min</span></div>
+      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Fondo</span></div>
       <div class="wkwrap"><div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="sdur">50 min</span><span class="space sp-g">6:30</span></div></div>
     </div></div>
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
@@ -817,7 +806,7 @@ body {
   <div class="whdr" onclick="tw('w7')"><div class="whdr-l"><span class="wnum">Semana 07</span><span class="wpill pill-d">Descarga</span></div><span class="wchev">▾</span></div>
   <div class="wdays">
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
-      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo corto</span><span class="dtime">40 min</span></div>
+      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo corto</span></div>
       <div class="wkwrap">
         <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="srow run"><span class="slabel"><strong>Correr</strong></span><span class="sdur">20 min</span><span class="space sp-b">5:40</span></div>
@@ -825,7 +814,7 @@ body {
       </div>
     </div></div>
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
-      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Fondo</span><span class="dtime">45 min</span></div>
+      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Fondo</span></div>
       <div class="wkwrap"><div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="sdur">45 min</span><span class="space sp-g">6:30</span></div></div>
     </div></div>
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
@@ -840,7 +829,7 @@ body {
   <div class="whdr" onclick="tw('w8')"><div class="whdr-l"><span class="wnum">Semana 08</span><span class="wpill pill-n">11–16 may</span></div><span class="wchev">▾</span></div>
   <div class="wdays">
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
-      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo 5K</span><span class="dtime">48 min</span></div>
+      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo 5K</span></div>
       <div class="wkwrap">
         <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="srow run"><span class="slabel"><strong>5 km</strong> continuo</span><span class="space sp-b">5:40</span><span class="srange">5:35–5:45</span></div>
@@ -848,7 +837,7 @@ body {
       </div>
     </div></div>
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
-      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Fondo</span><span class="dtime">45 min</span></div>
+      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Fondo</span></div>
       <div class="wkwrap"><div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="sdur">45 min</span><span class="space sp-g">6:30</span></div></div>
     </div></div>
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
@@ -867,7 +856,7 @@ body {
   <div class="whdr" onclick="tw('w9')"><div class="whdr-l"><span class="wnum">Semana 09</span><span class="wpill pill-n">18–23 may</span></div><span class="wchev">▾</span></div>
   <div class="wdays">
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
-      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo</span><span class="dtime">59 min</span></div>
+      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-tempo">Tempo</span></div>
       <div class="wkwrap">
         <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">3 series</div>
@@ -878,7 +867,7 @@ body {
       </div>
     </div></div>
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
-      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Fondo</span><span class="dtime">40 min</span></div>
+      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-suave">Fondo</span></div>
       <div class="wkwrap"><div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="sdur">40 min</span><span class="space sp-g">6:30</span></div></div>
     </div></div>
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
@@ -897,7 +886,7 @@ body {
   <div class="whdr" onclick="tw('w10')"><div class="whdr-l"><span class="wnum">Semana 10</span><span class="wpill pill-r">Semana de carrera</span></div><span class="wchev">▾</span></div>
   <div class="wdays">
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
-      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-suave">Activación</span><span class="dtime">39 min</span></div>
+      <div class="dhdr"><span class="dname">Lunes</span><span class="dtag t-suave">Activación</span></div>
       <div class="wkwrap">
         <div class="srow run"><span class="slabel"><strong>Trote</strong> continuo</span><span class="sdur">35 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">3 strides</div>
@@ -907,7 +896,7 @@ body {
       </div>
     </div></div>
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
-      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-tempo">Confirmación</span><span class="dtime">36 min</span></div>
+      <div class="dhdr"><span class="dname">Miércoles</span><span class="dtag t-tempo">Confirmación</span></div>
       <div class="wkwrap">
         <div class="srow wu"><span class="slabel"><strong>Entrada en calor</strong></span><span class="sdur">10 min</span><span class="space sp-g">6:30</span></div>
         <div class="iset"><div class="iset-hdr">2 series</div>
@@ -918,7 +907,7 @@ body {
       </div>
     </div></div>
     <div class="ditem"><div class="dcheck" onclick="td(this)"></div><div class="dbody">
-      <div class="dhdr"><span class="dname">Sábado</span><span class="dtag t-suave">Trote suave</span><span class="dtime">20 min</span></div>
+      <div class="dhdr"><span class="dname">Sábado</span><span class="dtag t-suave">Trote suave</span></div>
       <div class="wkwrap"><div class="srow run"><span class="slabel"><strong>Piernas descansadas</strong></span><span class="sdur">20 min</span><span class="space sp-g">6:40</span></div></div>
     </div></div>
   </div>
